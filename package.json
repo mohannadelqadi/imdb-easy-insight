@@ -1,0 +1,27 @@
+{
+  "name": "imdb-easy-insight",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://mohannadelqadi.github.io/imdb-easy-insight",
+  "dependencies": {
+    "gh-pages": "^1.0.0",
+    "git": "^0.1.5",
+    "jquery": "^3.2.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages-deploy",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages-deploy": "^0.4.2"
+  }
+}
