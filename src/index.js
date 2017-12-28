@@ -6,7 +6,7 @@ import HomaPage from './pages/HomePage.js'
 import Movie from './pages/Movie.js'
 import Reviews from './pages/Reviews.js'
 import Person from './pages/Person.js'
-import { BrowserRouter, Link, Route  } from 'react-router-dom'
+import { BrowserRouter, Link, Route } from 'react-router-dom'
 
 
 class HomePageRouter extends React.Component{

@@ -9,9 +9,15 @@ class Common extends React.Component{
 	}
 
 	cropText(text, length){
+		if(typeof(text) === 'undefined' || text === null || text === ''){
+			return '';
+		}
+		if(text.length <= length){
+			return text;
+		}
 		var trimmedString = text.substr(0, length);
 		trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));
-		return trimmedString;
+		return trimmedString + '...';
 	}
 
 	generateThumbUrl(thumb_id, dummy = 'slider-dummy'){

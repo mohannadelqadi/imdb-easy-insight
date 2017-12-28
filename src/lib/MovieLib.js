@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Common from './Common.js'
 import {Link} from 'react-router-dom'
+import movieCastnCrewList from './../customeCss/movieCastnCrewList.css'
 
 class CastAndCrew extends React.Component{
 	constructor(props){
@@ -92,19 +93,28 @@ class DrawFullCast extends React.Component{
 		var common = <Common />
 		if(typeof(this.state.full_cc.cast) !== 'undefined' 
 			&& this.state.full_cc.cast !== null){
-			return this.state.full_cc.cast.map((c) =>
-				<div key={c.id} className="cast">
-	                <figure className="cast-poster">
-	                	<Link to={"/person/" + c.id + "/" + this.props.mid + "/" + this.props.mname} >
-	                		<img src={common.type.prototype.generateThumbUrl(c.profile_path, 'poster-dummy')} className="cast-poster" alt={c.name} />
-	                	</Link>
-	                </figure>
-	                <div className="cast-title"><Link to={"/person/" + c.id}>{c.name}</Link><br /><span>{c.character}</span></div>
-	            </div>
-			)			
-	} else {
-		return null;
-	}
+			
+				let ccArray = this.state.full_cc.cast.slice(0, 20);
+
+				var topCnC = ccArray.map((c) =>{
+						return(
+							<div key={c.id} className="movie">
+				                <figure className="movie-poster">
+				                	<Link to={"/person/" + c.id + "/" + this.props.mid + "/" + this.props.mname} >
+				                		<img src={common.type.prototype.generateThumbUrl(c.profile_path, 'poster-dummy')} alt={c.name} />
+				                	</Link>
+				                </figure>
+				                <div className="movie-title"><Link to={"/person/" + c.id}>{c.name}</Link><br /><span className="cc-occupation">{c.character}</span></div>
+				            </div>
+						)
+					}
+				);
+
+				return topCnC;
+
+		} else {
+			return null;
+		}
 
 	}
 
@@ -113,7 +123,7 @@ class DrawFullCast extends React.Component{
 			return(
 				<div className="content">
 					<h2>Cast</h2>
-					<div className="cast-list">
+					<div className="movie-list cc-movie-list">
 						{this.getFullCastCards()}
 					</div>
 				</div>
@@ -151,9 +161,17 @@ class MovieReviews extends React.Component{
 
 	render(){
 		if(this.state.r_data != null){
-			return(
-				this.getReviewsMap()
-			)
+			let reviews = this.getReviewsMap();
+			if(reviews.length > 0){
+				return(
+					<div className="entry-content">
+	                	<h2>Movie Reviews</h2>
+	                	{reviews}
+	                </div>
+				)
+			} else {
+				return null;
+			}
 		} else {
 			return null;
 		}
@@ -287,10 +305,7 @@ class MovieLib extends React.Component{
 		                </div>
 		               	<DrawFullCast key={this.state.full_cast_crew === null ? 0 : this.state.full_cast_crew.length} mname={this.state.movie_data.title} mid={this.props.mid}  full_cast_crew={this.state.full_cast_crew} />
 		                <div className="clear-both">&nbsp;</div>
-		                <div className="entry-content">
-		                	<h2>Movie Reviews</h2>
-		                    <MovieReviews mid={this.props.mid} />
-		                </div>
+		                <MovieReviews mid={this.props.mid} />
 		            </div>
 		        </div>
 			)

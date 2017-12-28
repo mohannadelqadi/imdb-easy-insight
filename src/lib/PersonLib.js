@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import Common from './../lib/Common.js';
+import PersonCreditsLib from './PersonCreditsLib.js';
 
 class PersonLib extends React.Component{
 	constructor(props){
@@ -54,6 +55,7 @@ class PersonLib extends React.Component{
 		                	<h2>Biography</h2>
 		                    <p>{this.state.pdata.biography}</p>
 		                </div>
+		                <PersonCreditsLib pid={this.props.pid} pname={this.state.pdata.name} />
 		            </div>
 		        </div>
 			)

@@ -49,8 +49,7 @@ class MoviesInTheatresLib extends React.Component{
 			&& this.props.with_genres !== 0 && this.props.with_genres !== '0'){
 			with_genres = '&with_genres=' + this.props.with_genres;
 		}
-
-		/*Linnea Quigley*/
+		
 		fetch('https://api.themoviedb.org/3/discover/movie?api_key=0d24bb45443026590b898587853388a4' + primary_release_year + with_genres + '&page=' + this.props.page)
 	   	.then((response) => response.json())
 	   	.then((responseJson) => {

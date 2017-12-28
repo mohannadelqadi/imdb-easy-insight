@@ -1,0 +1,25 @@
+.credits-movie-list .movie{
+    width: 20%;
+    padding: 0 15px;
+    float: left;
+    margin-bottom: 30px;
+}
+
+@media screen and (min-width: 991px){
+    .credits-movie-list .movie:nth-child(5n+1) {
+        clear: both;
+    }
+}
+
+@media screen and (min-width: 991px){
+    .credits-movie-list .movie:nth-child(4n+1) {
+        clear: none;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .credits-movie-list .movie {
+        width: 100%;
+        clear: both;
+    }
+}
